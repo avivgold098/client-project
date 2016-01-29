@@ -3,38 +3,42 @@ package view;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 
-
+/**
+ * This class is presented the every Maze display.
+ * so this class is very generic for that. 
+ * this class is exerteds canvas because we wants to drawing some maze.
+ */
 public abstract class MazeDisplayer extends Canvas{
 	/**
-	 * Default Constructor
-	 * @param parent
-	 * @param style
-	 */
+     * MazeDisplayer ctor that call the super class ctor .
+      * @param parent The parent of our shell
+	 * @param style - Style of the widget.
+     */
 	public MazeDisplayer(Composite parent, int style) {
 		super(parent, style);
 	}
 	/**
-	 * move up
+	 * this method moving up the Character in the maze
 	 */
 	public abstract void moveUp();
 	/**
-	 * move down
+	 * this method moving down the Character in the maze
 	 */
 	public abstract  void moveDown();
 	/**
-	 * move left
+	 * this method moving left the Character in the maze
 	 */
 	public abstract  void moveLeft();
 	/**
-	 * move right
+	 * this method moving right the Character in the maze
 	 */
 	public  abstract void moveRight();
 	/**
-	 * move forward
+	 * this method moving forward the Character in the maze
 	 */
 	public abstract  void moveForward();
 	/**
-	 * move back
+	 * this method moving back the Character in the maze
 	 */
 	public  abstract void moveBack();
 }

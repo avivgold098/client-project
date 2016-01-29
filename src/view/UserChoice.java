@@ -9,32 +9,32 @@ import presenter.Command;
 
 public interface UserChoice {
 	/**
-	 * set the view
+	 * set the our view.
 	 * @param view
 	 */
 	void setView(View view);
 	/**
-	 * start the thread
+	 * start our thread.
 	 */
 	void start();
 	/**
 	 * display the message
-	 * @param message
+	 * @param message - the message we show.
 	 */
 	void setMessage(String message);
 	/**
-	 * set commands into hash map
+	 * set commands our hash map with another hash map.
 	 * @param hashCommand
 	 */
 	void setHashCommand(HashMap<String, Command> hc);
 	/**
-	 * display the maze
-	 * @param maze
+	 * display our maze
+	 * @param maze the we show.
 	 */
 	void setMessage(Maze3d maze);
 	/**
-	 * display the	sol
-	 * @param sol
+	 * display our	sol
+	 * @param sol - the sol wo shows.
 	 */
 	void setMessage(Solution<Position> sol);
 }

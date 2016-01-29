@@ -2,15 +2,26 @@ package view;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
+/**
+ * in this class into the view package we creating our basic windows that could serving us for 
+ * every project we wants. So he should to be very generic.
+ * @author HP
+ *
+ */
 public abstract class BasicWindow implements Runnable{
+	/**
+	 * Display in our Window.
+	 */
 	Display display;
+	/**
+	 * our shell 
+	 */
 	Shell shell;
 	/**
-	 * constructor for Basic Window
-	 * @param title
-	 * @param width
-	 * @param height
+	 * ctor for the class the initialize  our data members and title of the shell.
+	 * @param title - the title for the shell.
+	 * @param width - the width of the shell.
+	 * @param height - the high of the shell.
 	 */
  	public BasicWindow(String title, int width,int height) {
  		display=new Display();
@@ -19,11 +30,11 @@ public abstract class BasicWindow implements Runnable{
  		shell.setText(title);
 	}
 	/**
-	 * Configure the window widgets
+	 * here we making all our different things in our window. running shell and display.
 	 */
  	abstract void initWidgets();
 	/**
-	 * start the thread of the window
+	 * in this method we are starting the thread of the window
 	 */
 	@Override
 	public void run() {

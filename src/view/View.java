@@ -9,45 +9,50 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import presenter.Command;
 import presenter.Properties;
-
+/**
+ * This is the interface of the view into our mvp.
+ * here we have all the methods of show something. and doing something.
+ * @author HP
+ *
+ */
 public interface View {
 	/**
-	 * starts the program
+	 * this method starts our program
 	 */
 	void start();
 	/**
-	 * display the solution to the out file.
-	 * @param sol the solution we want to display
+	 * this method show our sol into file.
+	 * @param sol - the sol we want to show into the file.
 	 */
 	void displayMessage(Solution<Position> sol);
 	/**
-	 * display the maze to the out file.
-	 * @param maze the maze we want to display
+	 * this method show our maze into file.
+	 * @param maze - the maze we want to show into the file.
 	 */
 	void displayMessage(Maze3d maze);
 	/**
-	 * display the message to the out file.
-	 * @param message the message you want to display
+	 * this method show our message into file.
+	 * @param message - the message we want to show into the file.
 	 */
 	void displayMessage(String message);
 	/**
-	 * set the hash commands that we will send to the cli 
-	 * @param hc the full hash command
+	 * this method set the hash command for the cli.
+	 * @param hc the hash command for copied.
 	 */
 	void setHashCommand(HashMap<String,Command> hc);
 	/**
-	 * send notification to the presenter with the string[] that we got
-	 * @param str
+	 * this method the  notification with string[] to the presnter.
+	 * @param str - the str[] for the forward to the presnter.
 	 */
 	void notifyMe(String[] str);
 	/**
-	 * send notification to the presenter with the string that we got
-	 * @param str
+	 * this method the  notification with string to the presnter.
+	 * @param str - the str for the forward to the presnter.
 	 */
 	void notifyMe(String str);
 	/**
-	 * send notification message by properties 
-	 * @param properties
+	 * this method the  notification with properties to the presnter.
+	 * @param properties - the properties for the forward to the presnter.
 	 */
 	void notifyMe(Properties properties);
 }

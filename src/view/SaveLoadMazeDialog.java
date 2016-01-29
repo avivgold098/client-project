@@ -10,7 +10,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
+/**
+ * This class is presented the maze dialog .
+ * @author HP
+ *
+ */
 public class SaveLoadMazeDialog extends Dialog{
 	String message1;
 	String message2;
@@ -18,11 +22,11 @@ public class SaveLoadMazeDialog extends Dialog{
 	GUI gui;
 	Shell win;
     /**
-     * SaveLoadMazeDialog constructor
-     * @param parent
-     * @param style
-     * @param message1
-     * @param message2
+     * SaveLoadMazeDialog ctor.
+       * @param parent The parent of our shell
+	 * @param style - Style of the widget.
+     * @param message1- another message that with this message we set our message.
+     * @param message2 -another message that with this message we set our message.
      */
     public SaveLoadMazeDialog (GUI g,Shell parent, int style,String type, String message1,String message2) {
     	super(parent, style);
@@ -32,11 +36,11 @@ public class SaveLoadMazeDialog extends Dialog{
         this.message2 = message2;
     }
     /**
-     * SaveLoadMazeDialog constructor
-     * @param parent
-     * @param style
-     * @param message1
-     * @param message2
+   * SaveLoadMazeDialog ctor.
+       * @param parent The parent of our shell
+	 * @param style - Style of the widget.
+     * @param message1- another message that with this message we set our message.
+     * @param message2 -another message that with this message we set our message.
      */
     public SaveLoadMazeDialog (GUI g,Shell parent,String type, String message1,String message2) {
     	super (parent, 0);
@@ -47,7 +51,7 @@ public class SaveLoadMazeDialog extends Dialog{
         this.message2 = message2;
     }
     /**
-     * open the dialog
+     * this method open our dialog.
      */
     public void open () {
         //win = new Shell(parent, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);

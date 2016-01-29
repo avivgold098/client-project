@@ -13,19 +13,51 @@ import algorithms.mazeGenerators.Maze3d;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import presenter.Presenter;
-
+/**
+ * This is the class of CommonModel that shared all the common things to the different models.
+ * This class is implements the model interface, and also his type his abstract.
+ * Also in This class we have all the common things that should be is some models,
+ * for example every for (client - server ) project should have ip, port, socket data members.
+ * And you can to see more data member that common for the different models.
+ * With this class we can our project more generic, because now all the common things are in one class.
+ * @author Aviv gold
+ *
+ */
 public abstract class CommonModel extends Observable implements Model{
+	/**
+	 * our ip for the connection.
+	 */
 	String ip;
+	/**
+	 * our port for connection.
+	 */
 	int port;
+	/**
+	 * with this printer Writer we use after we are creating the socket.
+	 */
 	PrintWriter outToServer;
+	/**
+	 * with this Buffer Reader we use after we are creating the socket.
+	 */
 	BufferedReader inFromServer;
+	/**
+	 * our socket for the connection.
+	 */
 	Socket theServer;
-	Presenter presenter;
+	/**
+	 * with this hash map we saving our mazes
+	 */
 	HashMap<String, Maze3d> hm;
+	/**
+	 * with this hash map we save our solution.
+	 */
 	HashMap<Maze3d, Solution<Position>> hashSolution;
 	
 	/**
-	 * constructor for common model
+	 * ctor of our class that initialize our data members.
+	 * By initialize the socket we get the printer writer and also the buffer reader.
+	 * @param String ip - ip for connection.
+	 * @param port- the por for the connection.
 	 */
 		public CommonModel(String ip, int port) {
 		this.ip = ip;
@@ -58,7 +90,8 @@ public abstract class CommonModel extends Observable implements Model{
 	}
 	
 	/**
-	 * Default constructor 
+	 * Default ctor for our class
+	 * initialize the both hash map.
 	 */
 	public CommonModel()
 	{

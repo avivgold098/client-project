@@ -11,12 +11,17 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-
+/**
+ * This is the class that presented our window.
+ * @author HP
+ *
+ */
 public class GenerateWindow extends Dialog{
 	Shell win;
 	GUI gui;
 	/**
-	 * constructor of GeneratWindow 
+	 * The ctor of our class that initialize the data members and also using super type ctor.
+	 * Also this ctor his setting the shell text. 
 	 */
 	public GenerateWindow(GUI gui, Shell shell) {
 		super(shell);
@@ -25,7 +30,12 @@ public class GenerateWindow extends Dialog{
 		this.gui = gui;
 	}
 	/**
-	 * open the window 
+	 * In this method we are opening our window, and including all the options for the our gui.
+	 * for example in this window you can to select default generate or custom and then select your
+	 * parm for the your maze it is very simple for use.
+	 * So in this methods you we creating the different Listeners that handles different cases
+	 * (between the user choice). 
+	 * 
 	 */
 	public void open() {
 		win.setLayout(new GridLayout(2, false));
@@ -47,7 +57,7 @@ public class GenerateWindow extends Dialog{
 		nameText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
 		
 		Label y = new Label(win,SWT.NULL);
-		y.setText("Y Size:");
+		y.setText("Y:");
 		y.setLayoutData(new GridData(SWT.LEFT, SWT.LEFT, true, true, 1, 1));
 		
 		Text yText = new Text(win, SWT.SINGLE | SWT.BORDER);
@@ -55,7 +65,7 @@ public class GenerateWindow extends Dialog{
 		yText.setText("floors");
 		
 		Label z = new Label(win,SWT.NULL);
-		z.setText("Z Size:");
+		z.setText("Z:");
 		z.setLayoutData(new GridData(SWT.LEFT, SWT.LEFT, true, true, 1, 1));
 		
 		Text zText = new Text(win, SWT.SINGLE | SWT.BORDER);
@@ -63,7 +73,7 @@ public class GenerateWindow extends Dialog{
 		zText.setText("rows");
 		
 		Label x = new Label(win,SWT.NULL);
-		x.setText("X Size:");
+		x.setText("X:");
 		x.setLayoutData(new GridData(SWT.LEFT, SWT.LEFT, true, true, 1, 1));
 		
 		Text xText = new Text(win, SWT.SINGLE | SWT.BORDER);
@@ -136,7 +146,7 @@ public class GenerateWindow extends Dialog{
 					}
 					catch (NumberFormatException e){
 						isNumber = false;
-						DialogMessage dm = new DialogMessage(win, "X/Y/Z only numbers");
+						DialogMessage dm = new DialogMessage(win, "only numbers");
 						dm.open();	
 					}
 					

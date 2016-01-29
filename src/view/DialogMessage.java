@@ -9,32 +9,41 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
-
+/**
+ * This is the class that presented the dialog message we have each time.
+ * extends Dialog
+ * @author HP
+ *
+ */
 public class DialogMessage extends Dialog{
 	Object result;
+	/**
+	 * the dialog message
+	 */
 	String messege;
     /**
-     * DialogMessage constructor
-     * @param parent
-     * @param style
-     * @param messege
+     * the ctor of our DialogMessage class that call the super  class ctor.
+     * @param parent - the shell parent
+     * @param style - the style we wants.
+     * @param messege - the message into our dialog.
      */
     public DialogMessage (Shell parent, int style, String messege) {
     	super (parent, style);
         this.messege = messege;
     }
     /**
-     * DialogMessage constructor
-     * @param parent
-     * @param style
-     * @param messege
+     * the ctor of our DialogMessage class that call the super  class ctor with style=0.
+     * @param parent - the shell parent
+     * @param messege - the message into our dialog.
      */
     public DialogMessage (Shell parent, String messege) {
     	super (parent, 0);
         this.messege = messege;
     }
     /**
-     * open the dialog
+     * In this method we open our dialog and his settings.
+     * first we initialize new shell and the message box and his text.
+     * and then we write into the label we create the message we wants.
      */
     public Object open () {
         Shell parent = getParent();
@@ -62,10 +71,7 @@ public class DialogMessage extends Dialog{
 		});
 		
         shell.open();
-        /*Display display = parent.getDisplay();
-        while (!shell.isDisposed()) {
-        	if (!display.readAndDispatch()) display.sleep();
-        }*/
+   
         return result;
     }
 }

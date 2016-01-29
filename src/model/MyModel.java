@@ -21,21 +21,55 @@ import algorithms.search.Solution;
 import algorithms.search.State;
 import io.MyDecompressorInputStream;
 import presenter.Properties;
-
+/**
+ * This class the class of our model that call my model.
+ * This class is extends  the CommonModel so this class is very specific.
+ * In this class we our specific methods and data members.
+ * The my model role in the mvp architecture is using our computer science, and do all the different calcs,
+ * also in this class we forward the different problems to the server and then waiting for sol.
+ * In this class we all the implements of the abstract methods in the Common Model class.
+ * 
+ * @author HP
+ *
+ */
 
 
 public class MyModel extends CommonModel {
+	/**
+	 * with this hash map we saves the maze files.
+	 */
 	HashMap<Maze3d,String> mazeFile;
+	/**
+	 * with this hash we loaded our mazes.
+	 */
 	HashMap<String,Maze3d> loadedMaze;
+	/**
+	 * the x limit in our properties
+	 */
 	int x;
+	/**
+	 * the y limit in our properties
+	 */
 	int y;
+	/**
+	 * the y limit in our properties
+	 */
 	int z;
+	/**
+	 * the name of maze in our properties
+	 */
 	String name;
+	/**
+	 * our properties.
+	 */
 	Properties properties;
 	static int number = 0;
 	
 	/**
-	 * Constructor of MyModel
+	 * Ctor of our MyModel class that get Properties and ip and port for the super class.
+	 * @param properties - with this properties we Instantiate our properties.
+	 * @param ip- ip for the super class ctor.
+	 * @param port- port for the super class ctor.
 	 */
 	public MyModel(String ip, int port, Properties properties) {
 		super(ip, port);
@@ -47,8 +81,9 @@ public class MyModel extends CommonModel {
 	}	
 	
 	/**
-	 * Constructor that get the properties and initialize the variables
-	 * @param properties
+	 * Ctor that copied another properties to our data members Properties.
+	 *Also load the files.
+	 * @param properties- the other properties for Instantiate our date members.
 	 */
 	public MyModel(Properties properties) {
 		super();
@@ -412,7 +447,7 @@ public class MyModel extends CommonModel {
 		save();
 	}
 	/**
-	 * save the hash maps to the zip
+	 * In his method we save our hash maps into zip file.
 	 */
 	public void save() {
 		ObjectOutputStream out = null;
@@ -442,7 +477,7 @@ public class MyModel extends CommonModel {
 	}
 
 	/**
-	 * load the hash maps to the zip
+	 * in this method we load our hash map from zip file.
 	 */
 	@SuppressWarnings("unchecked")
 	public void load() {
@@ -478,45 +513,45 @@ public class MyModel extends CommonModel {
 
 	}
 	/**
-	 * set the x from by the properties
-	 * @param x
+	 * set the x limit data member
+	 * @param x - the other x
 	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
 	/**
-	 * set the y from by the properties
-	 * @param y
+	 * set the y limit data member
+	 * @param y - the other y
 	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	/**
-	 * set the z from by the properties
-	 * @param z
+	 * set the z limit data member
+	 * @param z - the other z
 	 */
 	public void setZ(int z) {
 		this.z = z;
 	}
 	/**
-	 * get the name of the maze from the properties
-	 * @return
+	 * This method return the name of the maze from our data member.
+	 * @return String- the name of the mze.
 	 */
 	public String getName() {
 		return name;
 	}
 	
 	/**
-	 * set the name from the properties
-	 * @param name
+	 * set the name of the maze in our data members.
+	 * @param name -  the other name that copied.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	/**
-	 * set the variables from the properties
-	 * @param properties
+	 * set the data members from other properties, and also update that is upload successfully.
+	 * @param properties - the other properties with them we set our data members.
 	 */
 	@Override
 	public void setProperties(Properties properties) {

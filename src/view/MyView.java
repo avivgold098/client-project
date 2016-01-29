@@ -9,9 +9,20 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import presenter.Command;
 import presenter.Properties;
-
+/**
+ * This is our View class into our mvp.
+ * here we have all the methods of show somthing.
+ * @author HP
+ *
+ */
 public class MyView extends Observable implements View{
+	/**
+	 * The user choice between gui and cli
+	 */
 	UserChoice uc;
+	/**
+	 * The hash map of the commands
+	 */
 	HashMap<String,Command> hc;
 
 	/**

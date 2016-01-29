@@ -14,7 +14,12 @@ import org.eclipse.swt.widgets.MenuItem;
 import algorithms.mazeGenerators.Maze3d;
 import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
-
+/**
+ * This is the class that draw our 3dmaze and his character  .
+ * in this class we drawing our maze.So for that we all the the data members we needs for draw maze.
+ * @author HP
+ *
+ */
 public class Maze3dDisplayer extends MazeDisplayer{
 
 
@@ -32,7 +37,9 @@ public class Maze3dDisplayer extends MazeDisplayer{
 	MenuItem mi;
 	double scale;
 	 /**
-     * DisplayMaze3D constructor
+     * DisplayMaze3D ctor that call the super class ctor and also create thread pool.
+      * @param parent The parent of our shell
+	 * @param style - Style of the widget.
      */
 	public Maze3dDisplayer(Composite parent, int style,MenuItem mi) {
 		super(parent, style);
@@ -40,15 +47,16 @@ public class Maze3dDisplayer extends MazeDisplayer{
 		this.mi = mi;
 	}	
 	/**
-     * get the maze
-     * @return maze-the maze
+     * this method return our correct maze.
+     * @return maze- our maze.
      */
 	public Maze3d getMaze() {
 		return maze;
 	}
 	/**
-     * set the maze
-     * @param maze-the maze
+     * This method is setting our maze with another maze.
+     * Also this method update the data members into the class for being correct for the new maze.
+     * @param maze- the another maze for copied.
      */
 	public void setMaze(Maze3d maze) {
 		this.maze = maze;
@@ -61,21 +69,23 @@ public class Maze3dDisplayer extends MazeDisplayer{
 		exitZ = maze.getGoalPosition().getZ();
 	}
 	/**
-	 * get the scale(the number that responsible for the zoom in/out)
-	 * @return
+	 * get the scale that the responsible number for the zoom in or out.
+	 * @return our scale.
 	 */
      public double getScale() {
 		return scale;
 	}
     /**
-     * set the scale 
-     * @param scale the number that responsible for the zoom in/out
+     * set our scale with another one. 
+     * @param scale the other scale.
      */
 	public void setScale(double scale) {
 		this.scale = scale;
 	}
 	/**
-      * draw the maze 3d and the character
+      * In this method we running on our maze 3d arr. and then we are draw him.
+      * first we loading our images from the resources lib into the project.
+      * and we always update the cell with the correct image.
       */
 	public void draw(){
 		Image image = new Image(getDisplay(), "resources/walls.jpg");
@@ -139,10 +149,10 @@ public class Maze3dDisplayer extends MazeDisplayer{
 		});
 	}
 	/**
-	 * move the character
-	 * @param x
-	 * @param y
-	 * @param z
+	 * In this method we move our Character from cells.
+	 * @param x - the x position of the Character
+	 * @param y -the y position of the Character
+	 * @param z the z position of the Character
 	 */
 	private void moveCharacter(int y,int z, int x){
 		if(characterX == exitX && characterZ == exitZ && characterY == exitY)
@@ -164,45 +174,58 @@ public class Maze3dDisplayer extends MazeDisplayer{
 		
 		}
 	}
-
+	/**
+	 * this method moving up the Character in the maze
+	 */
 	@Override
 	public void moveUp() {
 		
 		moveCharacter(this.characterY+1, this.characterZ, this.characterX);
 	}
-
+	/**
+	 * this method moving down the Character in the maze
+	 */
 	@Override
 	public void moveDown() {
 		
 		moveCharacter(this.characterY-1, this.characterZ, this.characterX);
 	}
-
+	/**
+	 * this method moving left the Character in the maze
+	 */
 	@Override
 	public void moveLeft() {
 		
 		moveCharacter(this.characterY, this.characterZ, this.characterX-1);
 	}
-
+	/**
+	 * this method moving right the Character in the maze
+	 */
 	@Override
 	public void moveRight() {
 		
 		moveCharacter(this.characterY, this.characterZ, this.characterX+1);
 	}
-
+	/**
+	 * this method forward right the Character in the maze
+	 */
 	@Override
 	public void moveForward() {
 		
 		moveCharacter(this.characterY, this.characterZ-1, this.characterX);
 	}
-
+	/**
+	 * this method moving back the Character in the maze
+	 */
 	@Override
 	public void moveBack() {
 		
 		moveCharacter(this.characterY, this.characterZ+1, this.characterX);
 	}
 	/**
-	 * display the solution
-	 * @param sol-the Solution for display
+	 * This method is display our sol of the maze.
+	 * between every step in the sol we are sleeping the thread for 0.5 sec.
+	 * @param sol-the Sol that using us.
 	 */
 	public void displaySolution(Solution<Position> sol)
 	{
@@ -233,8 +256,8 @@ public class Maze3dDisplayer extends MazeDisplayer{
 	}
 	
 	/**
-	 * set the running
-	 * @param running-the running
+	 * set the running value with another one value.
+	 * @param running- the other value.
 	 */
 	public void setRunning(boolean running){ 
 		
@@ -256,35 +279,35 @@ public class Maze3dDisplayer extends MazeDisplayer{
 			this.running=running;
 	}
 	/**
-	 * get the x of character
-	 * @return characterX-the x
+	 * get the x position of the character
+	 * @return character x position
 	 */
 	public int getCharacterX() {
 		return characterX;
 	}
 	/**
-	 * get the y of character
-	 * @return characterY-the y
+	 * get the y position of the character
+	 * @return character y position
 	 */
 	public int getCharacterY() {
 		return characterY;
 	}
 	/**
-	 * get the z of character
-	 * @return characterZ-the z
+	 * get the z position of the character
+	 * @return character z position
 	 */
 	public int getCharacterZ() {
 		return characterZ;
 	}
 	/**
-	 * get the y of the exit
-	 * @return exitY the y
+	 * get the y position of the exit of the end of the maze
+	 * @return character y position
 	 */
 	public int getExitY(){
 		return exitY;
 	}
 	/**
-	 * return if thread for solve is in progress
+	 * return if thread is still sloving the maze
 	 * @return boolean running
 	 */
 	public boolean isSolving() { return running; }

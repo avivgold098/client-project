@@ -1,5 +1,13 @@
 package presenter;
-
+/**
+ * This is the class of Presenter in our mvp.
+ * In the mvp the presenter "know" the model and the view but they now don't "know" him.
+ * The presenter now when to work when he gets notification from the model or the view and then
+ * he have recognize where the notification is from, and then according to the case he forward the 
+ * data object he gets in the parm of the method update.
+ * In this class we the hash map that mapping between all the different commands we have in our cli,
+ * and also we have in this class view and model date members for Contact with them.
+ */
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -22,15 +30,23 @@ import model.Model;
 import view.View;
 
 public class Presenter implements Observer {
+	/**
+	 * this date member is for Contacting with the view
+	 */
 	View view;
+	/**
+	 * this date member is for Contacting with the model
+	 */
 	Model model;
+	/**
+	 * in this hash we are mapping all the commands we have into the cli.
+	 */
 	HashMap<String,Command> hash;
 	/**
-	 * Presenter constructor - get Model and View
-	 * initialize the model and view
-	 * create the HashMap from String to Command
-	 * @param model - get object from type Model
-	 * @param view - get object from type View
+	 * Presenter ctor that gets model and view for initialize his date members.
+	 * Also in this ctor we are creating the hash map and puts into this hash all the commands.
+	 * @param model - The other model that copied for our date member.
+	 * @param view - The other view that copied for our date member.
 	 */
 	
 	public Presenter(Model model, View view) {
@@ -53,25 +69,30 @@ public class Presenter implements Observer {
 		view.setHashCommand(hash);
 	}
 	/**
-	 * set message and sent it to the view
-	 * @param -String message
+	 * in this method we get message and forward the message to the view.
+	 * @param message- the message we forward.
 	 */	
 	public void setMessage(String message) {
 		this.view.displayMessage(message);
 
 	}
 	/**
-	 * get the model
-	 * @return -Model model
+	 * in this method we return our model
+	 * @return our model.
 	 */	
 	public Model getModel(){ return model; }
 	/**
-	 * get the view
-	 * @return -View view
+	 * in this method we return our view
+	 * @return our view.
 	 */	
 	public View getView(){ return view; }
 	/**
-	 * connects between the model and the view
+	 * in this method we distinguish between the different notifications.
+	 * in this method we forward things between the model and the view.
+	 * and calling to the different methods.
+	 * @param o - the observable with this parm we know if the notification came from the view or the model.
+	 * @param atr- this is the object that sent with the observable, this is object so can to anything 
+	 * and that very usfeul. For example he can be: Maze3d,String,Position and what we wants.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

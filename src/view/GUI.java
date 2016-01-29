@@ -25,48 +25,81 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.Solution;
 import presenter.Command;
 import presenter.Properties;
-
+/**
+ * This is the class that presented the gui choice from the user choice.
+ * Its mean is that user wants project with gui.
+ * In this class we are building the gui options
+ * @author HP
+ *
+ */
 public class GUI extends BasicWindow implements UserChoice{
+	/**
+	 * view data member for calling the methods into the view
+	 */
 	View view;
+	/**
+	 * hash map that mapping between the string of command and his command.
+	 */
 	HashMap <String,Command> hc;
+	/**
+	 * our 3dMaze display.
+	 */
 	Maze3dDisplayer mazeDisplay;
 	/**
-	 * constructor for GUI
-	 * @param title
-	 * @param width
-	 * @param height
+	 * ctor for our class that call to the super type ctor.
+	 * @param title - the title of the shell
+	 * @param width - the shell width
+	 * @param height - the shell height.
 	 */
 	public GUI(String title, int width, int height) {
 		super(title, width, height);
 		
 	}
 
-
+	/**
+	 * In this method we set our view data member with another one.
+	 */
 	@Override
 	public void setView(View view) {
 		this.view = view;
 	}
-
+	/**
+	 * In this method we just calling to run the method.
+	 */
 	@Override
 	public void start() {
 		run();
 		
 	}
-
+	/**
+	 * in this method we passing the str we gets the view notifyme
+	 * @param str - the str[] for passing to the view methods.
+	 */
 	public void notifyMe(String[] str) {
 		view.notifyMe(str);
 		
 	}
-
+	/**
+	* in this method we passing the str we gets the view notifyme
+	 * @param str - the str for passing to the view methods.
+	 */
 	public void notifyMe(String str) {
 		view.notifyMe(str);
 		
 	}
-
+	/**
+	 * In this mehod we call to the set Maze method into the view and we are passing the maze from the parm.
+	 * @param Maze3d - the maze we are passing to the view.
+	 */
 	@Override
 	public void setMessage(Maze3d maze) {
 		mazeDisplay.setMaze(maze);
 	}
+	/**
+	 * in this method this method we setting the message of the dialog message.
+	 * and after we are setting the message we are sending the message into the initialize the
+	 * dialog Message.
+	 */
 	@Override
 	public void setMessage(String message) {
 		String temp = new String(message);
@@ -87,22 +120,34 @@ public class GUI extends BasicWindow implements UserChoice{
 		dm.open();
 		
 	}
+	/**
+	 * this method is redraw our maze. every we have an update we in the mazw we should to call this mehod.
+	 */
 	public void redraw() {
 		mazeDisplay.redraw();	
 	}
+	/**
+	 * In this method we set our HashMap hc data member with another one.
+	 */
 	@Override
 	public void setHashCommand(HashMap<String, Command> hc) {
 		this.hc = hc;
 		
 	}
-
+	/**
+	 * here we making all our different things in our window. running shell and display.
+	 * for example we creating all our menu items. and sets their texts.
+	 * and all the texts of the all the dialog messages we wants to show into the screen.
+	 */
 	@Override
 	void initWidgets() {
 
 		shell.setLayout(new GridLayout(3, false));
 
 		Menu menuBar, fileMenu, gameMenu,infoMenu;
-		MenuItem fileMenuHeader, gameMenuHeader,saveMazeItem,loadMazeItem, generateItem,hintItem,infoMenuHeader,floorNumberItem,solveItem, stopSolveItem, openPropertiesItem, exitItem,instructionsItem,aboutItem, newConnection;
+		MenuItem fileMenuHeader, gameMenuHeader,saveMazeItem,loadMazeItem, generateItem,
+		hintItem,infoMenuHeader,floorNumberItem,solveItem, stopSolveItem, openPropertiesItem, 
+		exitItem,instructionsItem,aboutItem, newConnection;
 		
 		menuBar = new Menu(shell,SWT.BAR);
 		
@@ -117,7 +162,6 @@ public class GUI extends BasicWindow implements UserChoice{
 		
 		newConnection = new MenuItem(fileMenu, SWT.PUSH);
 		newConnection.setText("&New Connection");
-		
 		instructionsItem = new MenuItem(fileMenu,SWT.PUSH);
 		instructionsItem.setText("&Instructions");
 		
@@ -338,7 +382,11 @@ public class GUI extends BasicWindow implements UserChoice{
 		});
 	}
 
-
+	/**
+	 * In this mehod we call to the set Solution method into the view and we are passing
+	 *  the Solution from the parm.
+	 * @param Solution<Position> - the Solution we are passing to the view.
+	 */
 	@Override
 	public void setMessage(Solution<Position> sol) {
 		mazeDisplay.displaySolution(sol);
